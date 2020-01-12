@@ -4,6 +4,7 @@ import random
 
 home = None
 
+
 e1_val = None
 tries = 0
 NumList = []
