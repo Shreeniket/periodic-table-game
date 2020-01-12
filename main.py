@@ -1,4 +1,4 @@
-# Created by Shreeniket987
+# Created by Shreeniket. Do not copy.
 from tkinter import *
 import csv
 import random
@@ -77,7 +77,12 @@ def NewFunc():
 def start():
     global home
     home = Tk()
+    home.geometry('295x280')
     home.title("Periodic Table Game")
+
+    frame = Frame(home)
+    frame.pack()
+
     with open('elementlist.csv') as csv_file:
         reader = csv.reader(csv_file, delimiter = ',')
         for row in reader:
@@ -91,26 +96,27 @@ def start():
     elNo = random.choice(NumList)
     elSym = SymList[elNo-1]
 
-    l1 = Label(home,text = elNo)
-    l1.grid(row = 0,column = 0,columnspan = 2)
+    l1 = Label(frame,text = elNo)
+    l1.grid(row = 0,column = 0,columnspan = 2, sticky = W+E+N+S)
     l1.config(font = ('Courier','125'))
 
     global e1_val
     e1_val = StringVar(home)
-    e1 = Entry(home, textvariable = e1_val)
-    e1.grid(column = 0,row = 1,columnspan = 2)
+    e1 = Entry(frame, textvariable = e1_val)
+    e1.grid(column = 0,row = 1,columnspan = 2, sticky = W+E+N+S)
 
-    b1 = Button(home, text = "Submit", command = SubmitFunc)
-    b1.grid(column = 0,row = 2)
+    b1 = Button(frame, text = "Submit", command = SubmitFunc)
+    b1.grid(column = 0,row = 2, sticky = W+E+N+S)
 
-    b2 = Button(home, text = "Show", command = ShowFunc)
-    b2.grid(column = 1,row = 2)
+    b2 = Button(frame, text = "Show", command = ShowFunc)
+    b2.grid(column = 1,row = 2, sticky = W+E+N+S)
 
-    b3 = Button(home, text = "Quit", command = home.destroy)
-    b3.grid(column = 0,row = 3)
+    b3 = Button(frame, text = "Quit", command = home.destroy)
+    b3.grid(column = 0,row = 3, sticky = W+E+N+S)
 
-    b4 = Button(home, text = "New", command = NewFunc)
-    b4.grid(column = 1,row = 3)
+    b4 = Button(frame, text = "New", command = NewFunc)
+    b4.grid(column = 1,row = 3, sticky = W+E+N+S)
 
     home.mainloop()
 start()
+#@Copyright
